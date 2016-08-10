@@ -1,0 +1,4431 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Cars",
+        "description": "Cars Resource of the University API Tutorial",
+        "termsOfService": "The terms of service for the University API Tutorial",
+        "contact": {
+            "name": "Matthew Hailstone",
+            "url": "http://matthewhailstone.com",
+            "email": "matthew_hailstone@byu.edu"
+        },
+        "license": {
+            "name": "License name",
+            "url": "https://raw.githubusercontent.com/byu-oit-appdev/cars-tutorial/master/LICENSE"
+        },
+        "version": "v1"
+    },
+    "host": "api.byu.edu",
+    "schemes": [
+        "https"
+    ],
+    "basePath": "/domains/tutorial/cars",
+    "produces": [
+        "application/json"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "parameters": {
+        "alwaysUsedParameter": {
+            "name": "always",
+            "in": "query",
+            "description": "You can reference this parameter definition from inside any path parameter definition",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+        }
+    },
+    "tags": [
+        {
+            "name": "Tutorial Tag One",
+            "description": "**Tutorial** tag one description",
+            "externalDocs": {
+                "description": "External **documentation** link",
+                "url": "https://raw.githubusercontent.com/byu-oit-appdev/cars-tutorial/master/README.md"
+            }
+        },
+        {
+            "name": "Tutorial Tag Two",
+            "description": "**Tutorial** tag two description"
+        }
+    ],
+    "externalDocs": {
+        "description": "External **documentation** link",
+        "url": "https://raw.githubusercontent.com/byu-oit-appdev/cars-tutorial/master/README.md"
+    },
+    "paths": {
+        "/": {
+            "get": {
+                "summary": "Cars summary to be less than 120 characters",
+                "description": "Retrieves a _collection_ of **Cars**",
+                "externalDocs": {
+                    "description": "External **documentation** link",
+                    "url": "https://raw.githubusercontent.com/byu-oit-appdev/cars-tutorial/master/README.md"
+                },
+                "operationId": "getCars",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/alwaysUsedParameter"
+                    },
+                    {
+                        "name": "plate_state",
+                        "in": "query",
+                        "description": "License Plate State",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "plate_number",
+                        "in": "query",
+                        "description": "License Plate Number",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "vehicle_type",
+                        "in": "query",
+                        "description": "Type of Vehicle",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "vehicle_year",
+                        "in": "query",
+                        "description": "Model Year of the Vehicle",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "make",
+                        "in": "query",
+                        "description": "Make of the Vehicle",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "model",
+                        "in": "query",
+                        "description": "Model of the Vehicle",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "color",
+                        "in": "query",
+                        "description": "Color of the Vehicle",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "owner_id",
+                        "in": "query",
+                        "description": "The ID of the owner of the vehicle",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "page_start",
+                        "in": "query",
+                        "description": "Specifies how far to skip into a large set",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "default": 1
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "Specifies how many items to return from a large set",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "default": 50
+                    },
+                    {
+                        "name": "field_sets",
+                        "in": "query",
+                        "description": "Field Sets Available",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "contexts",
+                        "in": "query",
+                        "description": "Group of Field Sets",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "insurance_policies.insurer",
+                        "in": "query",
+                        "description": "Insurance Agency of Insurance Policy",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Cars"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Collection **Retrieved**",
+                        "schema": {
+                            "$ref": "#/definitions/cars"
+                        },
+                        "headers": {
+                            "Custom-Header": {
+                                "description": "A short description",
+                                "type": "string"
+                            }
+                        },
+                        "examples": {
+                            "application/json": {
+                                "links": {
+                                    "cars__info": {
+                                        "rel": "self",
+                                        "href": "https://api.byu.edu/domains/tutorials/cars",
+                                        "method": "GET",
+                                        "title": "cars__getCars"
+                                    },
+                                    "cars__create": {
+                                        "rel": "cars__create",
+                                        "href": "https://api.byu.edu/domains/tutorials/cars",
+                                        "method": "POST",
+                                        "title": "cars__createCar"
+                                    }
+                                },
+                                "metadata": {
+                                    "collection_size": 3,
+                                    "page_start": 1,
+                                    "page_end": 3,
+                                    "page_size": 50,
+                                    "default_page_size": 50,
+                                    "max_page_size": 1000,
+                                    "field_sets_returned": [
+                                        "basic",
+                                        "odometer_log",
+                                        "trips",
+                                        "insurance",
+                                        "maintenance_log"
+                                    ],
+                                    "field_sets_available": [
+                                        "basic",
+                                        "odometer_log",
+                                        "trips",
+                                        "insurance",
+                                        "maintenance_log"
+                                    ],
+                                    "default_field_sets": [
+                                        "basic"
+                                    ],
+                                    "contexts_available": {
+                                        "mileage": [
+                                            "basic",
+                                            "odometer_log",
+                                            "trips"
+                                        ]
+                                    }
+                                },
+                                "values": [
+                                    {
+                                        "basic": {
+                                            "links": {
+                                                "cars__info": {
+                                                    "rel": "self",
+                                                    "href": "https://api.byu.edu/domains/tutorials/cars/1FTBE14A4NP05962",
+                                                    "method": "GET",
+                                                    "title": "cars__getCar"
+                                                },
+                                                "cars__modify": {
+                                                    "rel": "cars__modify",
+                                                    "href": "https://api.byu.edu/domains/tutorials/cars/1FTBE14A4NP05962",
+                                                    "method": "PUT",
+                                                    "title": "cars__modifyCar"
+                                                },
+                                                "cars__sell": {
+                                                    "rel": "cars__sell",
+                                                    "href": "https://api.byu.edu/domains/tutorials/cars/1FTBE14A4NP05962/salereceipts",
+                                                    "method": "POST",
+                                                    "title": "cars__sellCar"
+                                                },
+                                                "cars__delete": {
+                                                    "rel": "cars__delete",
+                                                    "href": "https://api.byu.edu/domains/tutorials/cars/1FTBE14A4NP05962",
+                                                    "method": "DELETE",
+                                                    "title": "cars__deleteCar"
+                                                },
+                                                "owners__info": {
+                                                    "rel": "owners__info",
+                                                    "href": "https://api.byu.edu/domains/tutorials/owners/783783783",
+                                                    "method": "GET",
+                                                    "title": "owners__getOwner"
+                                                }
+                                            },
+                                            "vin": {
+                                                "value": "1FTBE14A4NP05962",
+                                                "api_type": "modifiable",
+                                                "key": true
+                                            },
+                                            "plate_state": {
+                                                "value": "UT",
+                                                "api_type": "modifiable",
+                                                "description": "Utah",
+                                                "display_label": "Licence Plate State",
+                                                "domain": "https://api.byu.edu/domains/tutorials/meta/plate_state"
+                                            },
+                                            "plate_number": {
+                                                "value": "Q580RT",
+                                                "api_type": "modifiable",
+                                                "display_label": "Licence Plate Number"
+                                            },
+                                            "vehicle_type": {
+                                                "value": "Truck/SUV",
+                                                "api_type": "derived",
+                                                "display_label": "Vehicle Type",
+                                                "domain": "https://api.byu.edu/domains/tutorials/meta/cars/vehicle-type"
+                                            },
+                                            "vehicle_year": {
+                                                "value": "2013",
+                                                "api_type": "modifiable",
+                                                "display_label": "Vehicle Year"
+                                            },
+                                            "make": {
+                                                "value": "Toyota",
+                                                "api_type": "modifiable",
+                                                "display_label": "Make",
+                                                "domain": "https://api.byu.edu/domains/tutorials/meta/cars/make"
+                                            },
+                                            "model": {
+                                                "value": "RAV4",
+                                                "api_type": "modifiable",
+                                                "display_label": "Model",
+                                                "domain": "https://api.byu.edu/domains/tutorials/meta/cars/model/Toyota"
+                                            },
+                                            "color": {
+                                                "value": "Dark Green",
+                                                "api_type": "modifiable",
+                                                "display_label": "Color",
+                                                "domain": "https://api.byu.edu/domains/tutorials/meta/cars/color"
+                                            },
+                                            "owner_id": {
+                                                "value": "783783783",
+                                                "api_type": "modifiable"
+                                            },
+                                            "owner_name": {
+                                                "value": "Daisy Duck",
+                                                "api_type": "related",
+                                                "related_resource": "tutorial5-owners"
+                                            },
+                                            "created_by_id": {
+                                                "value": "586586586",
+                                                "api_type": "system",
+                                                "description": "Daffy Duck"
+                                            },
+                                            "created_date_time": {
+                                                "value": "2014-05-11T13:45:53.09Z",
+                                                "api_type": "system"
+                                            },
+                                            "updated_by_id": {
+                                                "value": "783783783",
+                                                "api_type": "system",
+                                                "description": "Daisy Duck"
+                                            },
+                                            "updated_date_time": {
+                                                "value": "2014-09-15T08:12:44.03Z",
+                                                "api_type": "system"
+                                            }
+                                        },
+                                        "odometer_logs": [
+                                            {
+                                                "vin": {
+                                                    "value": "1FTBE14A4NP05962",
+                                                    "api_type": "modifiable",
+                                                    "key": true
+                                                },
+                                                "read_date": {
+                                                    "value": "2014-05-11",
+                                                    "api_type": "modifiable",
+                                                    "key": true
+                                                },
+                                                "miles": {
+                                                    "value": 32459,
+                                                    "api_type": "modifiable",
+                                                    "display_label": "something"
+                                                },
+                                                "read_by_id": {
+                                                    "value": "586586586",
+                                                    "api_type": "modifiable",
+                                                    "display_label": "something"
+                                                },
+                                                "read_by_name": {
+                                                    "value": "Daffy Duck",
+                                                    "api_type": "related",
+                                                    "display_label": "something"
+                                                }
+                                            },
+                                            {
+                                                "vin": {
+                                                    "value": "1FTBE14A4NP05962",
+                                                    "api_type": "modifiable",
+                                                    "key": true
+                                                },
+                                                "read_date": {
+                                                    "value": "2014-06-08",
+                                                    "api_type": "modifiable",
+                                                    "key": true
+                                                },
+                                                "miles": {
+                                                    "value": 33782,
+                                                    "api_type": "modifiable",
+                                                    "display_label": "something"
+                                                },
+                                                "read_by_id": {
+                                                    "value": "586586586",
+                                                    "api_type": "modifiable",
+                                                    "display_label": "something"
+                                                },
+                                                "read_by_name": {
+                                                    "value": "Daffy Duck",
+                                                    "api_type": "related",
+                                                    "display_label": "something"
+                                                }
+                                            },
+                                            {
+                                                "vin": {
+                                                    "value": "1FTBE14A4NP05962",
+                                                    "api_type": "modifiable",
+                                                    "key": true
+                                                },
+                                                "read_date": {
+                                                    "value": "2014-07-12",
+                                                    "api_type": "modifiable",
+                                                    "key": true
+                                                },
+                                                "miles": {
+                                                    "value": 35121,
+                                                    "api_type": "modifiable",
+                                                    "display_label": "something"
+                                                },
+                                                "read_by_id": {
+                                                    "value": "783783783",
+                                                    "api_type": "modifiable",
+                                                    "display_label": "something"
+                                                },
+                                                "read_by_name": {
+                                                    "value": "Daisy Duck",
+                                                    "api_type": "related",
+                                                    "display_label": "something"
+                                                }
+                                            }
+                                        ],
+                                        "trips": [
+                                            {
+                                                "vin": {
+                                                    "value": "1FTBE14A4NP05962",
+                                                    "api_type": "modifiable",
+                                                    "key": true
+                                                },
+                                                "trip_id": {
+                                                    "value": "A148",
+                                                    "api_type": "modifiable",
+                                                    "key": true
+                                                },
+                                                "destination": {
+                                                    "value": "Seattle, Washington",
+                                                    "api_type": "modifiable",
+                                                    "display_label": "Trip Destination"
+                                                },
+                                                "start_date": {
+                                                    "value": "2012-08-10",
+                                                    "api_type": "modifiable",
+                                                    "display_label": "Trip Start Date"
+                                                },
+                                                "end_date": {
+                                                    "value": "2012-08-16",
+                                                    "api_type": "modifiable",
+                                                    "display_label": "Trip End Date"
+                                                },
+                                                "start_miles": {
+                                                    "value": 10745,
+                                                    "api_type": "modifiable",
+                                                    "display_label": "Trip Beginning Mileage"
+                                                },
+                                                "end_miles": {
+                                                    "value": 14826,
+                                                    "api_type": "modifiable",
+                                                    "display_label": "Trip Ending Mileage"
+                                                }
+                                            },
+                                            {
+                                                "vin": {
+                                                    "value": "1FTBE14A4NP05962",
+                                                    "api_type": "modifiable",
+                                                    "key": true
+                                                },
+                                                "trip_id": {
+                                                    "value": "C233",
+                                                    "api_type": "modifiable",
+                                                    "key": true
+                                                },
+                                                "destination": {
+                                                    "value": "Denver, Colorado",
+                                                    "api_type": "modifiable",
+                                                    "display_label": "Trip Destination"
+                                                },
+                                                "start_date": {
+                                                    "value": "2013-02-04",
+                                                    "api_type": "modifiable",
+                                                    "display_label": "Trip Start Date"
+                                                },
+                                                "end_date": {
+                                                    "value": "2013-02-09",
+                                                    "api_type": "modifiable",
+                                                    "display_label": "Trip End Date"
+                                                },
+                                                "start_miles": {
+                                                    "value": 17386,
+                                                    "api_type": "modifiable",
+                                                    "display_label": "Trip Beginning Mileage"
+                                                },
+                                                "end_miles": {
+                                                    "value": 18144,
+                                                    "api_type": "modifiable",
+                                                    "display_label": "Trip Ending Mileage"
+                                                }
+                                            },
+                                            {
+                                                "vin": {
+                                                    "value": "1FTBE14A4NP05962",
+                                                    "api_type": "modifiable",
+                                                    "key": true
+                                                },
+                                                "trip_id": {
+                                                    "value": "A432",
+                                                    "api_type": "modifiable",
+                                                    "key": true
+                                                },
+                                                "destination": {
+                                                    "value": "San Francisco, California",
+                                                    "api_type": "modifiable",
+                                                    "display_label": "Trip Destination"
+                                                },
+                                                "start_date": {
+                                                    "value": "2013-06-22",
+                                                    "api_type": "modifiable",
+                                                    "display_label": "Trip Start Date"
+                                                },
+                                                "end_date": {
+                                                    "value": "2013-06-26",
+                                                    "api_type": "modifiable",
+                                                    "display_label": "Trip End Date"
+                                                },
+                                                "start_miles": {
+                                                    "value": 22354,
+                                                    "api_type": "modifiable",
+                                                    "display_label": "Trip Beginning Mileage"
+                                                },
+                                                "end_miles": {
+                                                    "value": 24193,
+                                                    "api_type": "modifiable",
+                                                    "display_label": "Trip Ending Mileage"
+                                                }
+                                            }
+                                        ],
+                                        "insurance": {
+                                            "vin": {
+                                                "value": "1FTBE14A4NP05962",
+                                                "api_type": "modifiable",
+                                                "key": true
+                                            },
+                                            "policy_id": {
+                                                "value": "A842B53E41",
+                                                "api_type": "modifiable"
+                                            },
+                                            "insurer": {
+                                                "value": "GEICO",
+                                                "api_type": "modifiable",
+                                                "display_label": "Insurance Agency"
+                                            }
+                                        },
+                                        "maintenance_logs": [
+                                            {
+                                                "vin": {
+                                                    "value": "1FTBE14A4NP05962",
+                                                    "api_type": "modifiable",
+                                                    "key": true
+                                                },
+                                                "maintenance_id": {
+                                                    "value": "000354",
+                                                    "api_type": "modifiable",
+                                                    "key": true
+                                                },
+                                                "maintenance_date": {
+                                                    "value": "2013-06-01",
+                                                    "api_type": "modifiable",
+                                                    "display_label": "Maintenance Date"
+                                                },
+                                                "description": {
+                                                    "value": "Tune-up",
+                                                    "api_type": "modifable",
+                                                    "display_label": "Maintenance Description"
+                                                },
+                                                "cost": {
+                                                    "value": "283.45",
+                                                    "api_type": "modifiable",
+                                                    "display_label": "Maintenance Cost"
+                                                }
+                                            },
+                                            {
+                                                "vin": {
+                                                    "value": "1FTBE14A4NP05962",
+                                                    "api_type": "modifiable",
+                                                    "key": true
+                                                },
+                                                "maintenance_id": {
+                                                    "value": "000418",
+                                                    "api_type": "modifiable",
+                                                    "key": true
+                                                },
+                                                "maintenance_date": {
+                                                    "value": "2013-11-01",
+                                                    "api_type": "modifiable",
+                                                    "display_label": "Maintenance Date"
+                                                },
+                                                "description": {
+                                                    "value": "Oil & Lube",
+                                                    "api_type": "modifable",
+                                                    "display_label": "Maintenance Description"
+                                                },
+                                                "cost": {
+                                                    "value": "152.83",
+                                                    "api_type": "modifiable",
+                                                    "display_label": "Maintenance Cost"
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "basic": {
+                                            "links": {
+                                                "cars__info": {
+                                                    "rel": "self",
+                                                    "href": "https://api.byu.edu/domains/tutorials/cars/1DTGR14A6NP38861",
+                                                    "method": "GET",
+                                                    "title": "cars__getCar"
+                                                },
+                                                "cars__modify": {
+                                                    "rel": "cars__modify",
+                                                    "href": "https://api.byu.edu/domains/tutorials/cars/1DTGR14A6NP38861",
+                                                    "method": "PUT",
+                                                    "title": "cars__modifyCar"
+                                                },
+                                                "cars__sell": {
+                                                    "rel": "cars__sell",
+                                                    "href": "https://api.byu.edu/domains/tutorials/cars/1DTGR14A6NP38861/salereceipts",
+                                                    "method": "POST",
+                                                    "title": "cars__sellCar"
+                                                },
+                                                "cars__delete": {
+                                                    "rel": "cars__delete",
+                                                    "href": "https://api.byu.edu/domains/tutorials/cars/1DTGR14A6NP38861",
+                                                    "method": "DELETE",
+                                                    "title": "cars__deleteCar"
+                                                },
+                                                "owners__info": {
+                                                    "rel": "owners__info",
+                                                    "href": "https://api.byu.edu/domains/tutorials/owners/586586586",
+                                                    "method": "GET",
+                                                    "title": "cars__getOwner"
+                                                }
+                                            },
+                                            "vin": {
+                                                "value": "1DTGR14A6NP38861",
+                                                "api_type": "modifiable",
+                                                "key": true
+                                            },
+                                            "plate_state": {
+                                                "value": "UT",
+                                                "api_type": "modifiable",
+                                                "description": "Utah",
+                                                "display_label": "Licence Plate State",
+                                                "domain": "https://api.byu.edu/domains/tutorials/meta/cars/plate-state"
+                                            },
+                                            "plate_number": {
+                                                "value": "C49D3T",
+                                                "api_type": "modifiable",
+                                                "display_label": "Licence Plate Number"
+                                            },
+                                            "vehicle_type": {
+                                                "value": "Truck/SUV",
+                                                "api_type": "derived",
+                                                "display_label": "Vehicle Type",
+                                                "domain": "https://api.byu.edu/domains/tutorials/meta/cars/vehicle-type"
+                                            },
+                                            "vehicle_year": {
+                                                "value": "1997",
+                                                "api_type": "modifiable",
+                                                "display_label": "Vehicle Year"
+                                            },
+                                            "make": {
+                                                "value": "Ford",
+                                                "api_type": "modifiable",
+                                                "display_label": "Make",
+                                                "domain": "https://api.byu.edu/domains/tutorials/meta/cars/make"
+                                            },
+                                            "model": {
+                                                "value": "Ranger",
+                                                "api_type": "modifiable",
+                                                "display_label": "Model",
+                                                "domain": "https://api.byu.edu/domains/tutorials/meta/cars/model/Toyota"
+                                            },
+                                            "color": {
+                                                "value": "Blue",
+                                                "api_type": "modifiable",
+                                                "display_label": "Color",
+                                                "domain": "https://api.byu.edu/domains/tutorials/meta/cars/color"
+                                            },
+                                            "owner_id": {
+                                                "value": "586586586",
+                                                "api_type": "modifiable"
+                                            },
+                                            "owner_name": {
+                                                "value": "Daffy Duck",
+                                                "api_type": "related",
+                                                "related_resource": "tutorial5-owners"
+                                            },
+                                            "created_by_id": {
+                                                "value": "586586586",
+                                                "api_type": "system",
+                                                "description": "Daffy Duck"
+                                            },
+                                            "created_date_time": {
+                                                "value": "2014-05-11T13:45:53.09Z",
+                                                "api_type": "system"
+                                            },
+                                            "updated_by_id": {
+                                                "value": "783783783",
+                                                "api_type": "system",
+                                                "description": "Daisy Duck"
+                                            },
+                                            "updated_date_time": {
+                                                "value": "2014-09-15T08:12:44.03Z",
+                                                "api_type": "system"
+                                            }
+                                        },
+                                        "odometer_logs": [
+                                            {
+                                                "vin": {
+                                                    "value": "1DTGR14A6NP38861",
+                                                    "api_type": "modifiable",
+                                                    "key": true
+                                                },
+                                                "read_date": {
+                                                    "value": "2014-05-09",
+                                                    "api_type": "modifiable",
+                                                    "key": true
+                                                },
+                                                "miles": {
+                                                    "value": 26438,
+                                                    "api_type": "modifiable",
+                                                    "display_label": "something"
+                                                },
+                                                "read_by_id": {
+                                                    "value": "586586586",
+                                                    "api_type": "modifiable",
+                                                    "display_label": "something"
+                                                },
+                                                "read_by_name": {
+                                                    "value": "Daffy Duck",
+                                                    "api_type": "related",
+                                                    "display_label": "something"
+                                                }
+                                            },
+                                            {
+                                                "vin": {
+                                                    "value": "1DTGR14A6NP38861",
+                                                    "api_type": "modifiable",
+                                                    "key": true
+                                                },
+                                                "read_date": {
+                                                    "value": "2014-06-11",
+                                                    "api_type": "modifiable",
+                                                    "key": true
+                                                },
+                                                "miles": {
+                                                    "value": 29521,
+                                                    "api_type": "modifiable",
+                                                    "display_label": "something"
+                                                },
+                                                "read_by_id": {
+                                                    "value": "586586586",
+                                                    "api_type": "modifiable",
+                                                    "display_label": "something"
+                                                },
+                                                "read_by_name": {
+                                                    "value": "Daffy Duck",
+                                                    "api_type": "related",
+                                                    "display_label": "something"
+                                                }
+                                            },
+                                            {
+                                                "vin": {
+                                                    "value": "1DTGR14A6NP38861",
+                                                    "api_type": "modifiable",
+                                                    "key": true
+                                                },
+                                                "read_date": {
+                                                    "value": "2014-07-15",
+                                                    "api_type": "modifiable",
+                                                    "key": true
+                                                },
+                                                "miles": {
+                                                    "value": 30114,
+                                                    "api_type": "modifiable",
+                                                    "display_label": "something"
+                                                },
+                                                "read_by_id": {
+                                                    "value": "783783783",
+                                                    "api_type": "modifiable",
+                                                    "display_label": "something"
+                                                },
+                                                "read_by_name": {
+                                                    "value": "Daisy Duck",
+                                                    "api_type": "related",
+                                                    "display_label": "something"
+                                                }
+                                            }
+                                        ],
+                                        "trips": [
+                                            {
+                                                "vin": {
+                                                    "value": "1DTGR14A6NP38861",
+                                                    "api_type": "modifiable",
+                                                    "key": true
+                                                },
+                                                "trip_id": {
+                                                    "value": "A326",
+                                                    "api_type": "modifiable",
+                                                    "key": true
+                                                },
+                                                "destination": {
+                                                    "value": "Butte, Montana",
+                                                    "api_type": "modifiable",
+                                                    "display_label": "Trip Destination"
+                                                },
+                                                "start_date": {
+                                                    "value": "2012-09-06",
+                                                    "api_type": "modifiable",
+                                                    "display_label": "Trip Start Date"
+                                                },
+                                                "end_date": {
+                                                    "value": "2012-09-10",
+                                                    "api_type": "modifiable",
+                                                    "display_label": "Trip End Date"
+                                                },
+                                                "start_miles": {
+                                                    "value": 8265,
+                                                    "api_type": "modifiable",
+                                                    "display_label": "Trip Beginning Mileage"
+                                                },
+                                                "end_miles": {
+                                                    "value": 9854,
+                                                    "api_type": "modifiable",
+                                                    "display_label": "Trip Ending Mileage"
+                                                }
+                                            },
+                                            {
+                                                "vin": {
+                                                    "value": "1DTGR14A6NP38861",
+                                                    "api_type": "modifiable",
+                                                    "key": true
+                                                },
+                                                "trip_id": {
+                                                    "value": "D551",
+                                                    "api_type": "modifiable",
+                                                    "key": true
+                                                },
+                                                "destination": {
+                                                    "value": "St. Louis, Missouri",
+                                                    "api_type": "modifiable",
+                                                    "display_label": "Trip Destination"
+                                                },
+                                                "start_date": {
+                                                    "value": "2013-01-02",
+                                                    "api_type": "modifiable",
+                                                    "display_label": "Trip Start Date"
+                                                },
+                                                "end_date": {
+                                                    "value": "2013-01-12",
+                                                    "api_type": "modifiable",
+                                                    "display_label": "Trip End Date"
+                                                },
+                                                "start_miles": {
+                                                    "value": 11843,
+                                                    "api_type": "modifiable",
+                                                    "display_label": "Trip Beginning Mileage"
+                                                },
+                                                "end_miles": {
+                                                    "value": 15365,
+                                                    "api_type": "modifiable",
+                                                    "display_label": "Trip Ending Mileage"
+                                                }
+                                            },
+                                            {
+                                                "vin": {
+                                                    "value": "1DTGR14A6NP38861",
+                                                    "api_type": "modifiable",
+                                                    "key": true
+                                                },
+                                                "trip_id": {
+                                                    "value": "A776",
+                                                    "api_type": "modifiable",
+                                                    "key": true
+                                                },
+                                                "destination": {
+                                                    "value": "os Angeles, California",
+                                                    "api_type": "modifiable",
+                                                    "display_label": "Trip Destination"
+                                                },
+                                                "start_date": {
+                                                    "value": "2013-04-01",
+                                                    "api_type": "modifiable",
+                                                    "display_label": "Trip Start Date"
+                                                },
+                                                "end_date": {
+                                                    "value": "2013-04-06",
+                                                    "api_type": "modifiable",
+                                                    "display_label": "Trip End Date"
+                                                },
+                                                "start_miles": {
+                                                    "value": 17221,
+                                                    "api_type": "modifiable",
+                                                    "display_label": "Trip Beginning Mileage"
+                                                },
+                                                "end_miles": {
+                                                    "value": 19632,
+                                                    "api_type": "modifiable",
+                                                    "display_label": "Trip Ending Mileage"
+                                                }
+                                            }
+                                        ],
+                                        "insurance": {
+                                            "vin": {
+                                                "value": "1DTGR14A6NP38861",
+                                                "api_type": "modifiable",
+                                                "key": true
+                                            },
+                                            "policy_id": {
+                                                "value": "421T84GX333",
+                                                "api_type": "modifiable"
+                                            },
+                                            "insurer": {
+                                                "value": "State Farm",
+                                                "api_type": "modifiable",
+                                                "display_label": "Insurance Agency"
+                                            }
+                                        },
+                                        "maintenance_logs": [
+                                            {
+                                                "vin": {
+                                                    "value": "1DTGR14A6NP38861",
+                                                    "api_type": "modifiable",
+                                                    "key": true
+                                                },
+                                                "maintenance_id": {
+                                                    "value": "000401",
+                                                    "api_type": "modifiable",
+                                                    "key": true
+                                                },
+                                                "maintenance_date": {
+                                                    "value": "2013-08-01",
+                                                    "api_type": "modifiable",
+                                                    "display_label": "Maintenance Date"
+                                                },
+                                                "description": {
+                                                    "value": "New Tires",
+                                                    "api_type": "modifable",
+                                                    "display_label": "Maintenance Description"
+                                                },
+                                                "cost": {
+                                                    "value": "533.12",
+                                                    "api_type": "modifiable",
+                                                    "display_label": "Maintenance Cost"
+                                                }
+                                            },
+                                            {
+                                                "vin": {
+                                                    "value": "1DTGR14A6NP38861",
+                                                    "api_type": "modifiable",
+                                                    "key": true
+                                                },
+                                                "maintenance_id": {
+                                                    "value": "000663",
+                                                    "api_type": "modifiable",
+                                                    "key": true
+                                                },
+                                                "maintenance_date": {
+                                                    "value": "2014-02-01",
+                                                    "api_type": "modifiable",
+                                                    "display_label": "Maintenance Date"
+                                                },
+                                                "description": {
+                                                    "value": "Replace Alternator",
+                                                    "api_type": "modifable",
+                                                    "display_label": "Maintenance Description"
+                                                },
+                                                "cost": {
+                                                    "value": "486.23",
+                                                    "api_type": "modifiable",
+                                                    "display_label": "Maintenance Cost"
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "basic": {
+                                            "links": {
+                                                "cars__info": {
+                                                    "rel": "self",
+                                                    "href": "https://api.byu.edu/domains/tutorials/cars/1CRTW25A3NX78232",
+                                                    "method": "GET",
+                                                    "title": "cars__getCar"
+                                                },
+                                                "cars__modify": {
+                                                    "rel": "cars__modify",
+                                                    "href": "https://api.byu.edu/domains/tutorials/cars/1CRTW25A3NX78232",
+                                                    "method": "PUT",
+                                                    "title": "cars__modifyCar"
+                                                },
+                                                "cars__sell": {
+                                                    "rel": "cars__sell",
+                                                    "href": "https://api.byu.edu/domains/tutorials/cars/1CRTW25A3NX78232/salereceipts",
+                                                    "method": "POST",
+                                                    "title": "cars__sellCar"
+                                                },
+                                                "cars__delete": {
+                                                    "rel": "cars__delete",
+                                                    "href": "https://api.byu.edu/domains/tutorials/cars/1CRTW25A3NX78232",
+                                                    "method": "DELETE",
+                                                    "title": "cars__deleteCar"
+                                                },
+                                                "owners__info": {
+                                                    "rel": "owners__info",
+                                                    "href": "https://api.byu.edu/domains/tutorials/owners/586586586",
+                                                    "method": "GET",
+                                                    "title": "owners__getOwner"
+                                                }
+                                            },
+                                            "vin": {
+                                                "value": "1CRTW25A3NX78232",
+                                                "api_type": "modifiable",
+                                                "key": true
+                                            },
+                                            "plate_state": {
+                                                "value": "UT",
+                                                "api_type": "modifiable",
+                                                "description": "Utah",
+                                                "display_label": "Licence Plate State",
+                                                "domain": "https://api.byu.edu/domains/tutorials/meta/cars/plate-state"
+                                            },
+                                            "plate_number": {
+                                                "value": "L43S3T",
+                                                "api_type": "modifiable",
+                                                "display_label": "Licence Plate Number"
+                                            },
+                                            "vehicle_type": {
+                                                "value": "Truck/SUV",
+                                                "api_type": "derived",
+                                                "display_label": "Vehicle Type",
+                                                "domain": "https://api.byu.edu/domains/tutorials/meta/cars/vehicle-type"
+                                            },
+                                            "vehicle_year": {
+                                                "value": "2003",
+                                                "api_type": "modifiable",
+                                                "display_label": "Vehicle Year"
+                                            },
+                                            "make": {
+                                                "value": "Chevrolet",
+                                                "api_type": "modifiable",
+                                                "display_label": "Make",
+                                                "domain": "https://api.byu.edu/domains/tutorials/meta/cars/make"
+                                            },
+                                            "model": {
+                                                "value": "Sierra",
+                                                "api_type": "modifiable",
+                                                "display_label": "Model",
+                                                "domain": "https://api.byu.edu/domains/tutorials/meta/cars/model/Toyota"
+                                            },
+                                            "color": {
+                                                "value": "Tan",
+                                                "api_type": "modifiable",
+                                                "display_label": "Color",
+                                                "domain": "https://api.byu.edu/domains/tutorials/meta/cars/color"
+                                            },
+                                            "owner_id": {
+                                                "value": "586586586",
+                                                "api_type": "modifiable"
+                                            },
+                                            "owner_name": {
+                                                "value": "Daffy Duck",
+                                                "api_type": "related",
+                                                "related_resource": "tutorial5-owners"
+                                            },
+                                            "created_by_id": {
+                                                "value": "586586586",
+                                                "api_type": "system",
+                                                "description": "Daffy Duck"
+                                            },
+                                            "created_date_time": {
+                                                "value": "2014-05-11T13:45:53.09Z",
+                                                "api_type": "system"
+                                            },
+                                            "updated_by_id": {
+                                                "value": "783783783",
+                                                "api_type": "system",
+                                                "description": "Daisy Duck"
+                                            },
+                                            "updated_date_time": {
+                                                "value": "2014-09-15T08:12:44.03Z",
+                                                "api_type": "system"
+                                            }
+                                        },
+                                        "odometer_logs": [
+                                            {
+                                                "vin": {
+                                                    "value": "1CRTW25A3NX78232",
+                                                    "api_type": "modifiable",
+                                                    "key": true
+                                                },
+                                                "read_date": {
+                                                    "value": "2014-05-03",
+                                                    "api_type": "modifiable",
+                                                    "key": true
+                                                },
+                                                "miles": {
+                                                    "value": 85919,
+                                                    "api_type": "modifiable",
+                                                    "display_label": "something"
+                                                },
+                                                "read_by_id": {
+                                                    "value": "586586586",
+                                                    "api_type": "modifiable",
+                                                    "display_label": "something"
+                                                },
+                                                "read_by_name": {
+                                                    "value": "Daffy Duck",
+                                                    "api_type": "related",
+                                                    "display_label": "something"
+                                                }
+                                            },
+                                            {
+                                                "vin": {
+                                                    "value": "1CRTW25A3NX78232",
+                                                    "api_type": "modifiable",
+                                                    "key": true
+                                                },
+                                                "read_date": {
+                                                    "value": "2014-06-22",
+                                                    "api_type": "modifiable",
+                                                    "key": true,
+                                                    "display_label": "something"
+                                                },
+                                                "miles": {
+                                                    "value": 90652,
+                                                    "api_type": "modifiable",
+                                                    "display_label": "something"
+                                                },
+                                                "read_by_id": {
+                                                    "values": "586586586",
+                                                    "api_type": "modifiable",
+                                                    "display_label": "something"
+                                                },
+                                                "read_by_name": {
+                                                    "value": "Daffy Duck",
+                                                    "api_type": "related",
+                                                    "display_label": "something"
+                                                }
+                                            },
+                                            {
+                                                "vin": {
+                                                    "value": "1CRTW25A3NX78232",
+                                                    "api_type": "modifiable",
+                                                    "key": true
+                                                },
+                                                "read_date": {
+                                                    "value": "2014-07-21",
+                                                    "api_type": "modifiable",
+                                                    "key": true,
+                                                    "display_label": "something"
+                                                },
+                                                "miles": {
+                                                    "value": 94126,
+                                                    "api_type": "modifiable",
+                                                    "display_label": "something"
+                                                },
+                                                "read_by_id": {
+                                                    "value": "783783783",
+                                                    "api_type": "modifiable",
+                                                    "display_label": "something"
+                                                },
+                                                "read_by_name": {
+                                                    "value": "Daisy Duck",
+                                                    "api_type": "related",
+                                                    "display_label": "something"
+                                                }
+                                            }
+                                        ],
+                                        "trips": [
+                                            {
+                                                "vin": {
+                                                    "value": "1CRTW25A3NX78232",
+                                                    "api_type": "modifiable",
+                                                    "key": true
+                                                },
+                                                "trip_id": {
+                                                    "value": "B111",
+                                                    "api_type": "modifiable",
+                                                    "key": true
+                                                },
+                                                "destination": {
+                                                    "value": "Pocatello, Idaho",
+                                                    "api_type": "modifiable",
+                                                    "display_label": "Trip Destination"
+                                                },
+                                                "start_date": {
+                                                    "value": "2011-04-01",
+                                                    "api_type": "modifiable",
+                                                    "display_label": "Trip Start Date"
+                                                },
+                                                "end_date": {
+                                                    "value": "2011-04-10",
+                                                    "api_type": "modifiable",
+                                                    "display_label": "Trip End Date"
+                                                },
+                                                "start_miles": {
+                                                    "value": 18542,
+                                                    "api_type": "modifiable",
+                                                    "display_label": "Trip Beginning Mileage"
+                                                },
+                                                "end_miles": {
+                                                    "value": 19296,
+                                                    "api_type": "modifiable",
+                                                    "display_label": "Trip Ending Mileage"
+                                                }
+                                            },
+                                            {
+                                                "vin": {
+                                                    "value": "1CRTW25A3NX78232",
+                                                    "api_type": "modifiable",
+                                                    "key": true
+                                                },
+                                                "trip_id": {
+                                                    "value": "E028",
+                                                    "api_type": "modifiable",
+                                                    "key": true
+                                                },
+                                                "destination": {
+                                                    "value": "Ely, Nevada",
+                                                    "api_type": "modifiable",
+                                                    "display_label": "Trip Destination"
+                                                },
+                                                "start_date": {
+                                                    "value": "2013-04-01",
+                                                    "api_type": "modifiable",
+                                                    "display_label": "Trip Start Date"
+                                                },
+                                                "end_date": {
+                                                    "value": "2013-04-10",
+                                                    "api_type": "modifiable",
+                                                    "display_label": "Trip End Date"
+                                                },
+                                                "start_miles": {
+                                                    "value": 60181,
+                                                    "api_type": "modifiable",
+                                                    "display_label": "Trip Beginning Mileage"
+                                                },
+                                                "end_miles": {
+                                                    "value": 60946,
+                                                    "api_type": "modifiable",
+                                                    "display_label": "Trip Ending Mileage"
+                                                }
+                                            }
+                                        ],
+                                        "insurance": {
+                                            "vin": {
+                                                "value": "1CRTW25A3NX78232",
+                                                "api_type": "modifiable",
+                                                "key": true
+                                            },
+                                            "policy_id": {
+                                                "value": "Y583958CV43",
+                                                "api_type": "modifiable"
+                                            },
+                                            "insurer": {
+                                                "value": "All State",
+                                                "api_type": "modifiable",
+                                                "display_label": "Insurance Agency"
+                                            }
+                                        },
+                                        "maintenance_logs": [
+                                            {
+                                                "vin": {
+                                                    "value": "1CRTW25A3NX78232",
+                                                    "api_type": "modifiable",
+                                                    "key": true
+                                                },
+                                                "maintenance_id": {
+                                                    "value": "000710",
+                                                    "api_type": "modifiable",
+                                                    "key": true
+                                                },
+                                                "maintenance_date": {
+                                                    "value": "2013-10-31",
+                                                    "api_type": "modifiable",
+                                                    "display_label": "Maintenance Date"
+                                                },
+                                                "description": {
+                                                    "value": "New Transmission",
+                                                    "api_type": "modifable",
+                                                    "display_label": "Maintenance Description"
+                                                },
+                                                "cost": {
+                                                    "value": "2436.11",
+                                                    "api_type": "modifiable",
+                                                    "display_label": "Maintenance Cost"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request - unable to interpret request",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "401": {
+                        "description": "Authentication required to access data",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "403": {
+                        "description": "Access denied to protected data",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "404": {
+                        "description": "No Cars satisfy the query parameters - the collection is empty",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "409": {
+                        "description": "Query parameters conflict or are malformed",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Cars",
+                "description": "Create a new Car",
+                "operationId": "createCar",
+                "parameters": [
+                    {
+                        "name": "car",
+                        "in": "body",
+                        "description": "The Car to be added",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/car"
+                        }
+                    }
+                ],
+                "tags": [
+                    "Cars"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Car Added",
+                        "schema": {
+                            "$ref": "#/definitions/car"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request - unable to interpret request",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "401": {
+                        "description": "Authentication required to access data",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "403": {
+                        "description": "Access denied to protected data",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "409": {
+                        "description": "Request Body conflicts or is malformed",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    }
+                }
+            },
+            "options": {
+                "summary": "Cars",
+                "description": "What can this endpoint do?",
+                "tags": [
+                    "Cars"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Supported HTTP Methods",
+                        "schema": {
+                            "$ref": "#/definitions/methods"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request - unable to interpret request",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    }
+                }
+            }
+        },
+        "/{vin}": {
+            "get": {
+                "summary": "Cars",
+                "description": "Retrieves a specific Car",
+                "operationId": "getCar",
+                "parameters": [
+                    {
+                        "name": "vin",
+                        "in": "path",
+                        "description": "Vehicle Identification Number",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "field_sets",
+                        "in": "query",
+                        "description": "Field Sets Available",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "contexts",
+                        "in": "query",
+                        "description": "Group of Field Sets",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Cars"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Item Retrieved",
+                        "schema": {
+                            "$ref": "#/definitions/car"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request - unable to interpret request",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "401": {
+                        "description": "Authentication required to access data",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "403": {
+                        "description": "Access denied to protected data",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "404": {
+                        "description": "No Cars satisfy the request - the collection is empty",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "summary": "Cars",
+                "description": "Modify a specific Car",
+                "operationId": "modifyCar",
+                "parameters": [
+                    {
+                        "name": "vin",
+                        "in": "path",
+                        "description": "Vehicle Identification Number",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "car",
+                        "in": "body",
+                        "description": "The Car to be modified",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/car"
+                        }
+                    }
+                ],
+                "tags": [
+                    "Cars"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Car Modified",
+                        "schema": {
+                            "$ref": "#/definitions/car"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request - unable to interpret request",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "401": {
+                        "description": "Authentication required to access data",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "403": {
+                        "description": "Access denied to protected data",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "409": {
+                        "description": "Request Body conflicts or is malformed",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Cars",
+                "description": "Delete a specific Car",
+                "operationId": "deleteCar",
+                "parameters": [
+                    {
+                        "name": "vin",
+                        "in": "path",
+                        "description": "Vehicle Identification Number",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Cars"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Car successfully removed"
+                    },
+                    "400": {
+                        "description": "Invalid Request - unable to interpret request",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "401": {
+                        "description": "Authentication required to access data",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "403": {
+                        "description": "Access denied to protected data",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    }
+                }
+            },
+            "options": {
+                "summary": "Cars",
+                "description": "What can this endpoint do?",
+                "operationId": "carOptions",
+                "parameters": [
+                    {
+                        "name": "vin",
+                        "in": "path",
+                        "description": "Vehicle Identification Number",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Cars"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Supported HTTP Methods",
+                        "schema": {
+                            "$ref": "#/definitions/methods"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request - unable to interpret request",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    }
+                }
+            }
+        },
+        "/{vin}/odometer_logs": {
+            "get": {
+                "summary": "Cars",
+                "description": "Retrieves a collection of Odometer Logs for a specific Car",
+                "operationId": "getOdometerLogs",
+                "parameters": [
+                    {
+                        "name": "vin",
+                        "in": "path",
+                        "description": "Vehicle Identification Number",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "read_date",
+                        "in": "query",
+                        "description": "When the odometer log was created",
+                        "required": false,
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    {
+                        "name": "miles",
+                        "in": "query",
+                        "description": "Mileage read on odometer",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Cars"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Collection Retrieved",
+                        "schema": {
+                            "$ref": "#/definitions/odometerlogs"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request - unable to interpret request",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "401": {
+                        "description": "Authentication required to access data",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "403": {
+                        "description": "Access denied to protected data",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "404": {
+                        "description": "No Odometer Logs satisfy the query parameters - the collection is empty",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "409": {
+                        "description": "Query parameters conflict or are malformed",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "summary": "Cars",
+                "description": "Creates a new Odometer Log",
+                "operationId": "createOdometerLog",
+                "parameters": [
+                    {
+                        "name": "vin",
+                        "in": "path",
+                        "description": "Vehicle Identification Number",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "odometer_log",
+                        "in": "body",
+                        "description": "The Odometer Log to be added",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/odometerlog"
+                        }
+                    }
+                ],
+                "tags": [
+                    "Cars"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Odometer Log Added",
+                        "schema": {
+                            "$ref": "#/definitions/odometerlog"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request - unable to interpret request",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "401": {
+                        "description": "Authentication required to access data",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "403": {
+                        "description": "Access denied to protected data",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "409": {
+                        "description": "Request Body conflicts or is malformed",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    }
+                }
+            },
+            "options": {
+                "summary": "Cars",
+                "description": "What can this endpoint do?",
+                "operationId": "OdometerLogsOptions",
+                "parameters": [
+                    {
+                        "name": "vin",
+                        "in": "path",
+                        "description": "Vehicle Identification Number",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Cars"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Supported HTTP Methods",
+                        "schema": {
+                            "$ref": "#/definitions/methods"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request - unable to interpret request",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    }
+                }
+            }
+        },
+        "/{vin}/odometer_logs/{read_date}": {
+            "get": {
+                "summary": "Cars",
+                "description": "Retrieves a specific Odometer Log",
+                "operationId": "getOdometerLog",
+                "parameters": [
+                    {
+                        "name": "vin",
+                        "in": "path",
+                        "description": "Vehicle Identification Number",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "read_date",
+                        "in": "path",
+                        "description": "When the odometer log was created",
+                        "required": true,
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                ],
+                "tags": [
+                    "Cars"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Item Retrieved",
+                        "schema": {
+                            "$ref": "#/definitions/odometerlog"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request - unable to interpret request",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "401": {
+                        "description": "Authentication required to access data",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "403": {
+                        "description": "Access denied to protected data",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "404": {
+                        "description": "No Odometer Logs satisfy the request - the collection is empty",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "summary": "Cars",
+                "description": "Modify a specific Odometer Log",
+                "operationId": "modifyOdometerLog",
+                "parameters": [
+                    {
+                        "name": "vin",
+                        "in": "path",
+                        "description": "Vehicle Identification Number",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "read_date",
+                        "in": "path",
+                        "description": "When the odometer log was created",
+                        "required": true,
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    {
+                        "name": "odometer_log",
+                        "in": "body",
+                        "description": "The Odometer Log to be modified",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/odometerlog"
+                        }
+                    }
+                ],
+                "tags": [
+                    "Cars"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Odometer Log Modified",
+                        "schema": {
+                            "$ref": "#/definitions/odometerlog"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request - unable to interpret request",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "401": {
+                        "description": "Authentication required to access data",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "403": {
+                        "description": "Access denied to protected data",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "409": {
+                        "description": "Request Body conflicts or is malformed",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Cars",
+                "description": "Delete a specific Odometer Log",
+                "operationId": "deleteOdometerLog",
+                "parameters": [
+                    {
+                        "name": "vin",
+                        "in": "path",
+                        "description": "Vehicle Identification Number",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "read_date",
+                        "in": "path",
+                        "description": "When the Odometer Log was created",
+                        "required": true,
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                ],
+                "tags": [
+                    "Cars"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Odometer Log successfully removed"
+                    },
+                    "400": {
+                        "description": "Invalid Request - unable to interpret request",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "401": {
+                        "description": "Authentication required to access data",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "403": {
+                        "description": "Access denied to protected data",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    }
+                }
+            },
+            "options": {
+                "summary": "Cars",
+                "description": "What can this endpoint do?",
+                "operationId": "OdometerLogOptions",
+                "parameters": [
+                    {
+                        "name": "vin",
+                        "in": "path",
+                        "description": "Vehicle Identification Number",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "read_date",
+                        "in": "path",
+                        "description": "When the Odometer Log was created",
+                        "required": true,
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                ],
+                "tags": [
+                    "Cars"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Supported HTTP Methods",
+                        "schema": {
+                            "$ref": "#/definitions/methods"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request - unable to interpret request",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    }
+                }
+            }
+        },
+        "/{vin}/trips": {
+            "get": {
+                "summary": "Cars",
+                "description": "Retrieves a collection of trips for a specific Car",
+                "operationId": "getTrips",
+                "parameters": [
+                    {
+                        "name": "vin",
+                        "in": "path",
+                        "description": "Vehicle Identification Number",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "destination",
+                        "in": "query",
+                        "description": "Trip Destination",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "start_date",
+                        "in": "query",
+                        "description": "When the trip began",
+                        "required": false,
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                ],
+                "tags": [
+                    "Cars"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Collection Retrieved",
+                        "schema": {
+                            "$ref": "#/definitions/trips"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request - unable to interpret request",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "401": {
+                        "description": "Authentication required to access data",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "403": {
+                        "description": "Access denied to protected data",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "404": {
+                        "description": "No Trips satisfy the query parameters - the collection is empty",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "409": {
+                        "description": "Query parameters conflict or are malformed",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "summary": "Cars",
+                "description": "Create a new trip",
+                "operationId": "createTrip",
+                "parameters": [
+                    {
+                        "name": "vin",
+                        "in": "path",
+                        "description": "Vehicle Identification Number",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "trip",
+                        "in": "body",
+                        "description": "The Trip to be added",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/trip"
+                        }
+                    }
+                ],
+                "tags": [
+                    "Cars"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Trip Added",
+                        "schema": {
+                            "$ref": "#/definitions/trip"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request - unable to interpret request",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "401": {
+                        "description": "Authentication required to access data",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "403": {
+                        "description": "Access denied to protected data",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "409": {
+                        "description": "Request Body conflicts or is malformed",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    }
+                }
+            },
+            "options": {
+                "summary": "Cars",
+                "description": "What can this endpoint do?",
+                "operationId": "TripsOptions",
+                "parameters": [
+                    {
+                        "name": "vin",
+                        "in": "path",
+                        "description": "Vehicle Identification Number",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Cars"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Supported HTTP Methods",
+                        "schema": {
+                            "$ref": "#/definitions/methods"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request - unable to interpret request",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    }
+                }
+            }
+        },
+        "/{vin}/trips/{trip_id}": {
+            "get": {
+                "summary": "Cars",
+                "description": "Retrieves a specific Trip",
+                "operationId": "getTrip",
+                "parameters": [
+                    {
+                        "name": "vin",
+                        "in": "path",
+                        "description": "Vehicle Identification Number",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "trip_id",
+                        "in": "path",
+                        "description": "Trip Identification Number",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Cars"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Item Retrieved",
+                        "schema": {
+                            "$ref": "#/definitions/trip"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request - unable to interpret request",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "401": {
+                        "description": "Authentication required to access data",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "403": {
+                        "description": "Access denied to protected data",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "404": {
+                        "description": "No Trips satisfy the request - the collection is empty",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "summary": "Cars",
+                "description": "Modify a specific Trip",
+                "operationId": "modifyTrip",
+                "parameters": [
+                    {
+                        "name": "vin",
+                        "in": "path",
+                        "description": "Vehicle Identification Number",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "trip_id",
+                        "in": "path",
+                        "description": "Trip Identification Number",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "trip",
+                        "in": "body",
+                        "description": "The Trip to be modified",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/trip"
+                        }
+                    }
+                ],
+                "tags": [
+                    "Cars"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Trip Modified",
+                        "schema": {
+                            "$ref": "#/definitions/trip"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request - unable to interpret request",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "401": {
+                        "description": "Authentication required to access data",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "403": {
+                        "description": "Access denied to protected data",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "409": {
+                        "description": "Request Body conflicts or is malformed",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Cars",
+                "description": "Delete a specific Trip",
+                "operationId": "deleteTrip",
+                "parameters": [
+                    {
+                        "name": "vin",
+                        "in": "path",
+                        "description": "Vehicle Identification Number",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "trip_id",
+                        "in": "path",
+                        "description": "Trip Identification Number",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Cars"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Trip successfully removed"
+                    },
+                    "400": {
+                        "description": "Invalid Request - unable to interpret request",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "401": {
+                        "description": "Authentication required to access data",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "403": {
+                        "description": "Access denied to protected data",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    }
+                }
+            },
+            "options": {
+                "summary": "Cars",
+                "description": "What can this endpoint do?",
+                "operationId": "TripOptions",
+                "parameters": [
+                    {
+                        "name": "vin",
+                        "in": "path",
+                        "description": "Vehicle Identification Number",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "trip_id",
+                        "in": "path",
+                        "description": "Trip Identification Number",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Cars"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Supported HTTP Methods",
+                        "schema": {
+                            "$ref": "#/definitions/methods"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request - unable to interpret request",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    }
+                }
+            }
+        },
+        "/{vin}/insurance_policies": {
+            "get": {
+                "summary": "Cars",
+                "description": "Retrieves the insurance policy for a specific car",
+                "operationId": "getPolicy",
+                "parameters": [
+                    {
+                        "name": "vin",
+                        "in": "path",
+                        "description": "Vehicle Identification Number",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Cars"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Insurance Policy Retrieved",
+                        "schema": {
+                            "$ref": "#/definitions/insurancepolicies"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request - unable to interpret request",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "401": {
+                        "description": "Authentication required to access data",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "403": {
+                        "description": "Access denied to protected data",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "404": {
+                        "description": "No Insurance Policy satisfies the request - the collection is empty",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "summary": "Cars",
+                "description": "Create or Modify a specific car's insurance policies",
+                "operationId": "createModifyPolicy",
+                "parameters": [
+                    {
+                        "name": "vin",
+                        "in": "path",
+                        "description": "Vehicle Identification Number",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "insurance_policy",
+                        "in": "body",
+                        "description": "The Insurance Policy to be added or modified",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/insurancepolicies"
+                        }
+                    }
+                ],
+                "tags": [
+                    "Cars"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Insurance Policy Modified",
+                        "schema": {
+                            "$ref": "#/definitions/insurancepolicies"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request - unable to interpret request",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "401": {
+                        "description": "Authentication required to access data",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "403": {
+                        "description": "Access denied to protected data",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "409": {
+                        "description": "Request Body conflicts or is malformed",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Cars",
+                "description": "Remove the insurance policy from this Car",
+                "operationId": "deletePolicy",
+                "parameters": [
+                    {
+                        "name": "vin",
+                        "in": "path",
+                        "description": "Vehicle Identification Number",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Cars"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Insurance Policy successfully removed"
+                    },
+                    "400": {
+                        "description": "Invalid Request - unable to interpret request",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "401": {
+                        "description": "Authentication required to access data",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "403": {
+                        "description": "Access denied to protected data",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    }
+                }
+            },
+            "options": {
+                "summary": "Cars",
+                "description": "What can this endpoint do?",
+                "operationId": "PolicyOptions",
+                "parameters": [
+                    {
+                        "name": "vin",
+                        "in": "path",
+                        "description": "Vehicle Identification Number",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Cars"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Supported HTTP Methods",
+                        "schema": {
+                            "$ref": "#/definitions/methods"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request - unable to interpret request",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    }
+                }
+            }
+        },
+        "/{vin}/maintenance_logs": {
+            "get": {
+                "summary": "Cars",
+                "description": "Retrieves a collection of Maintenance Logs for a specific Car",
+                "operationId": "getMaintenanceLogs",
+                "parameters": [
+                    {
+                        "name": "vin",
+                        "in": "path",
+                        "description": "Vehicle Identification Number",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "maintenance_date",
+                        "in": "query",
+                        "description": "When the maintenance was done on the Car",
+                        "required": false,
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    {
+                        "name": "cost",
+                        "in": "query",
+                        "description": "Cost of Maintenance",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Cars"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Collection Retrieved",
+                        "schema": {
+                            "$ref": "#/definitions/maintenancelogs"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request - unable to interpret request",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "401": {
+                        "description": "Authentication required to access data",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "403": {
+                        "description": "Access denied to protected data",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "404": {
+                        "description": "No Maintenance Logs satisfy the query parameters - the collection is empty",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "409": {
+                        "description": "Query parameters conflict or are malformed",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "summary": "Cars",
+                "description": "Create a new maintenance log",
+                "operationId": "createMaintenanceLog",
+                "parameters": [
+                    {
+                        "name": "vin",
+                        "in": "path",
+                        "description": "Vehicle Identification Number",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "maintenance_log",
+                        "in": "body",
+                        "description": "The Maintenance Log to be added",
+                        "schema": {
+                            "$ref": "#/definitions/maintenancelog"
+                        }
+                    }
+                ],
+                "tags": [
+                    "Cars"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Maintenance Log Added",
+                        "schema": {
+                            "$ref": "#/definitions/maintenancelog"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request - unable to interpret request",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "401": {
+                        "description": "Authentication required to access data",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "403": {
+                        "description": "Access denied to protected data",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "409": {
+                        "description": "Request Body conflicts or is malformed",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    }
+                }
+            },
+            "options": {
+                "summary": "Cars",
+                "description": "What can this endpoint do?",
+                "operationId": "MaintenanceLogsOptions",
+                "parameters": [
+                    {
+                        "name": "vin",
+                        "in": "path",
+                        "description": "Vehicle Identification Number",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Cars"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Supported HTTP Methods",
+                        "schema": {
+                            "$ref": "#/definitions/methods"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request - unable to interpret request",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    }
+                }
+            }
+        },
+        "/{vin}/maintenance_logs/{maintenance_id}": {
+            "get": {
+                "summary": "Cars",
+                "description": "Retrieves a specific Maintenance Log",
+                "operationId": "getMaintenanceLog",
+                "parameters": [
+                    {
+                        "name": "vin",
+                        "in": "path",
+                        "description": "Vehicle Identification Number",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "maintenance_id",
+                        "in": "path",
+                        "description": "Maintenance Log Identification Number",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Cars"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Item Retrieved",
+                        "schema": {
+                            "$ref": "#/definitions/maintenancelog"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request - unable to interpret request",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "401": {
+                        "description": "Authentication required to access data",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "403": {
+                        "description": "Access denied to protected data",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "404": {
+                        "description": "No Maintenance Logs satisfy the request - the collection is empty",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "summary": "Cars",
+                "description": "Modify a specific Maintenance Log",
+                "operationId": "modifyMaintenanceLog",
+                "parameters": [
+                    {
+                        "name": "vin",
+                        "in": "path",
+                        "description": "Vehicle Identification Number",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "maintenance_id",
+                        "in": "path",
+                        "description": "Maintenance Log Identification Number",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "maintenance_log",
+                        "in": "body",
+                        "description": "The Maintenance Log to be modified",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/maintenancelog"
+                        }
+                    }
+                ],
+                "tags": [
+                    "Cars"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Maintenance Log Modified",
+                        "schema": {
+                            "$ref": "#/definitions/maintenancelog"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request - unable to interpret request",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "401": {
+                        "description": "Authentication required to access data",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "403": {
+                        "description": "Access denied to protected data",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "409": {
+                        "description": "Request Body conflicts or is malformed",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Cars",
+                "description": "Delete a specific Maintenance Log",
+                "operationId": "deleteMaintenanceLog",
+                "parameters": [
+                    {
+                        "name": "vin",
+                        "in": "path",
+                        "description": "Vehicle Identification Number",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "maintenance_id",
+                        "in": "path",
+                        "description": "Maintenance Log Identification Number",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Cars"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Maintenance Log successfully removed"
+                    },
+                    "400": {
+                        "description": "Invalid Request - unable to interpret request",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "401": {
+                        "description": "Authentication required to access data",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    },
+                    "403": {
+                        "description": "Access denied to protected data",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    }
+                }
+            },
+            "options": {
+                "summary": "Cars",
+                "description": "What can this endpoint do?",
+                "operationId": "MaintenanceLogOptions",
+                "parameters": [
+                    {
+                        "name": "vin",
+                        "in": "path",
+                        "description": "Vehicle Identification Number",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "maintenance_id",
+                        "in": "path",
+                        "description": "Maintenance Log Identification Number",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Cars"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Supported HTTP Methods",
+                        "schema": {
+                            "$ref": "#/definitions/methods"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request - unable to interpret request",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "cars": {
+            "description": "A collection of Cars",
+            "type": "object",
+            "required": [
+                "values"
+            ],
+            "properties": {
+                "links": {
+                    "description": "Hypermedia Links that impact the entire Cars collection",
+                    "type": "object",
+                    "properties": {
+                        "tutorial4-cars.info": {
+                            "$ref": "#/definitions/link"
+                        },
+                        "tutorial4-cars.create": {
+                            "$ref": "#/definitions/link"
+                        }
+                    }
+                },
+                "metadata": {
+                    "$ref": "#/definitions/toplevelmetadata"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/car"
+                    }
+                }
+            },
+            "example": {
+                "basic": {
+                    "links": {
+                        "cars__info": {
+                            "rel": "self",
+                            "href": "https://api.byu.edu/domains/tutorials/cars/1FTBE14A4NP05962",
+                            "method": "GET",
+                            "title": "cars__getCar"
+                        },
+                        "cars__modify": {
+                            "rel": "cars__modify",
+                            "href": "https://api.byu.edu/domains/tutorials/cars/1FTBE14A4NP05962",
+                            "method": "PUT",
+                            "title": "cars__modifyCar"
+                        },
+                        "cars__sell": {
+                            "rel": "cars__sell",
+                            "href": "https://api.byu.edu/domains/tutorials/cars/1FTBE14A4NP05962/salereceipts",
+                            "method": "POST",
+                            "title": "cars__sellCar"
+                        },
+                        "cars__delete": {
+                            "rel": "cars__delete",
+                            "href": "https://api.byu.edu/domains/tutorials/cars/1FTBE14A4NP05962",
+                            "method": "DELETE",
+                            "title": "cars__deleteCar"
+                        },
+                        "owners__info": {
+                            "rel": "owners__info",
+                            "href": "https://api.byu.edu/domains/tutorials/owners/783783783",
+                            "method": "GET",
+                            "title": "owners__getOwner"
+                        }
+                    },
+                    "vin": {
+                        "value": "1FTBE14A4NP05962",
+                        "api_type": "modifiable",
+                        "key": true
+                    },
+                    "plate_state": {
+                        "value": "UT",
+                        "api_type": "modifiable",
+                        "description": "Utah",
+                        "display_label": "Licence Plate State",
+                        "domain": "https://api.byu.edu/domains/tutorials/meta/plate_state"
+                    },
+                    "plate_number": {
+                        "value": "Q580RT",
+                        "api_type": "modifiable",
+                        "display_label": "Licence Plate Number"
+                    },
+                    "vehicle_type": {
+                        "value": "Truck/SUV",
+                        "api_type": "derived",
+                        "display_label": "Vehicle Type",
+                        "domain": "https://api.byu.edu/domains/tutorials/meta/cars/vehicle-type"
+                    },
+                    "vehicle_year": {
+                        "value": "2013",
+                        "api_type": "modifiable",
+                        "display_label": "Vehicle Year"
+                    },
+                    "make": {
+                        "value": "Toyota",
+                        "api_type": "modifiable",
+                        "display_label": "Make",
+                        "domain": "https://api.byu.edu/domains/tutorials/meta/cars/make"
+                    },
+                    "model": {
+                        "value": "RAV4",
+                        "api_type": "modifiable",
+                        "display_label": "Model",
+                        "domain": "https://api.byu.edu/domains/tutorials/meta/cars/model/Toyota"
+                    },
+                    "color": {
+                        "value": "Dark Green",
+                        "api_type": "modifiable",
+                        "display_label": "Color",
+                        "domain": "https://api.byu.edu/domains/tutorials/meta/cars/color"
+                    },
+                    "owner_id": {
+                        "value": "783783783",
+                        "api_type": "modifiable"
+                    },
+                    "owner_name": {
+                        "value": "Daisy Duck",
+                        "api_type": "related",
+                        "related_resource": "tutorial5-owners"
+                    },
+                    "created_by_id": {
+                        "value": "586586586",
+                        "api_type": "system",
+                        "description": "Daffy Duck"
+                    },
+                    "created_date_time": {
+                        "value": "2014-05-11T13:45:53.09Z",
+                        "api_type": "system"
+                    },
+                    "updated_by_id": {
+                        "value": "783783783",
+                        "api_type": "system",
+                        "description": "Daisy Duck"
+                    },
+                    "updated_date_time": {
+                        "value": "2014-09-15T08:12:44.03Z",
+                        "api_type": "system"
+                    }
+                },
+                "odometer_logs": [
+                    {
+                        "vin": {
+                            "value": "1FTBE14A4NP05962",
+                            "api_type": "modifiable",
+                            "key": true
+                        },
+                        "read_date": {
+                            "value": "2014-05-11",
+                            "api_type": "modifiable",
+                            "key": true
+                        },
+                        "miles": {
+                            "value": 32459,
+                            "api_type": "modifiable",
+                            "display_label": "something"
+                        },
+                        "read_by_id": {
+                            "value": "586586586",
+                            "api_type": "modifiable",
+                            "display_label": "something"
+                        },
+                        "read_by_name": {
+                            "value": "Daffy Duck",
+                            "api_type": "related",
+                            "display_label": "something"
+                        }
+                    },
+                    {
+                        "vin": {
+                            "value": "1FTBE14A4NP05962",
+                            "api_type": "modifiable",
+                            "key": true
+                        },
+                        "read_date": {
+                            "value": "2014-06-08",
+                            "api_type": "modifiable",
+                            "key": true
+                        },
+                        "miles": {
+                            "value": 33782,
+                            "api_type": "modifiable",
+                            "display_label": "something"
+                        },
+                        "read_by_id": {
+                            "value": "586586586",
+                            "api_type": "modifiable",
+                            "display_label": "something"
+                        },
+                        "read_by_name": {
+                            "value": "Daffy Duck",
+                            "api_type": "related",
+                            "display_label": "something"
+                        }
+                    },
+                    {
+                        "vin": {
+                            "value": "1FTBE14A4NP05962",
+                            "api_type": "modifiable",
+                            "key": true
+                        },
+                        "read_date": {
+                            "value": "2014-07-12",
+                            "api_type": "modifiable",
+                            "key": true
+                        },
+                        "miles": {
+                            "value": 35121,
+                            "api_type": "modifiable",
+                            "display_label": "something"
+                        },
+                        "read_by_id": {
+                            "value": "783783783",
+                            "api_type": "modifiable",
+                            "display_label": "something"
+                        },
+                        "read_by_name": {
+                            "value": "Daisy Duck",
+                            "api_type": "related",
+                            "display_label": "something"
+                        }
+                    }
+                ],
+                "trips": [
+                    {
+                        "vin": {
+                            "value": "1FTBE14A4NP05962",
+                            "api_type": "modifiable",
+                            "key": true
+                        },
+                        "trip_id": {
+                            "value": "A148",
+                            "api_type": "modifiable",
+                            "key": true
+                        },
+                        "destination": {
+                            "value": "Seattle, Washington",
+                            "api_type": "modifiable",
+                            "display_label": "Trip Destination"
+                        },
+                        "start_date": {
+                            "value": "2012-08-10",
+                            "api_type": "modifiable",
+                            "display_label": "Trip Start Date"
+                        },
+                        "end_date": {
+                            "value": "2012-08-16",
+                            "api_type": "modifiable",
+                            "display_label": "Trip End Date"
+                        },
+                        "start_miles": {
+                            "value": 10745,
+                            "api_type": "modifiable",
+                            "display_label": "Trip Beginning Mileage"
+                        },
+                        "end_miles": {
+                            "value": 14826,
+                            "api_type": "modifiable",
+                            "display_label": "Trip Ending Mileage"
+                        }
+                    },
+                    {
+                        "vin": {
+                            "value": "1FTBE14A4NP05962",
+                            "api_type": "modifiable",
+                            "key": true
+                        },
+                        "trip_id": {
+                            "value": "C233",
+                            "api_type": "modifiable",
+                            "key": true
+                        },
+                        "destination": {
+                            "value": "Denver, Colorado",
+                            "api_type": "modifiable",
+                            "display_label": "Trip Destination"
+                        },
+                        "start_date": {
+                            "value": "2013-02-04",
+                            "api_type": "modifiable",
+                            "display_label": "Trip Start Date"
+                        },
+                        "end_date": {
+                            "value": "2013-02-09",
+                            "api_type": "modifiable",
+                            "display_label": "Trip End Date"
+                        },
+                        "start_miles": {
+                            "value": 17386,
+                            "api_type": "modifiable",
+                            "display_label": "Trip Beginning Mileage"
+                        },
+                        "end_miles": {
+                            "value": 18144,
+                            "api_type": "modifiable",
+                            "display_label": "Trip Ending Mileage"
+                        }
+                    },
+                    {
+                        "vin": {
+                            "value": "1FTBE14A4NP05962",
+                            "api_type": "modifiable",
+                            "key": true
+                        },
+                        "trip_id": {
+                            "value": "A432",
+                            "api_type": "modifiable",
+                            "key": true
+                        },
+                        "destination": {
+                            "value": "San Francisco, California",
+                            "api_type": "modifiable",
+                            "display_label": "Trip Destination"
+                        },
+                        "start_date": {
+                            "value": "2013-06-22",
+                            "api_type": "modifiable",
+                            "display_label": "Trip Start Date"
+                        },
+                        "end_date": {
+                            "value": "2013-06-26",
+                            "api_type": "modifiable",
+                            "display_label": "Trip End Date"
+                        },
+                        "start_miles": {
+                            "value": 22354,
+                            "api_type": "modifiable",
+                            "display_label": "Trip Beginning Mileage"
+                        },
+                        "end_miles": {
+                            "value": 24193,
+                            "api_type": "modifiable",
+                            "display_label": "Trip Ending Mileage"
+                        }
+                    }
+                ],
+                "insurance": {
+                    "vin": {
+                        "value": "1FTBE14A4NP05962",
+                        "api_type": "modifiable",
+                        "key": true
+                    },
+                    "policy_id": {
+                        "value": "A842B53E41",
+                        "api_type": "modifiable"
+                    },
+                    "insurer": {
+                        "value": "GEICO",
+                        "api_type": "modifiable",
+                        "display_label": "Insurance Agency"
+                    }
+                },
+                "maintenance_logs": [
+                    {
+                        "vin": {
+                            "value": "1FTBE14A4NP05962",
+                            "api_type": "modifiable",
+                            "key": true
+                        },
+                        "maintenance_id": {
+                            "value": "000354",
+                            "api_type": "modifiable",
+                            "key": true
+                        },
+                        "maintenance_date": {
+                            "value": "2013-06-01",
+                            "api_type": "modifiable",
+                            "display_label": "Maintenance Date"
+                        },
+                        "description": {
+                            "value": "Tune-up",
+                            "api_type": "modifable",
+                            "display_label": "Maintenance Description"
+                        },
+                        "cost": {
+                            "value": "283.45",
+                            "api_type": "modifiable",
+                            "display_label": "Maintenance Cost"
+                        }
+                    },
+                    {
+                        "vin": {
+                            "value": "1FTBE14A4NP05962",
+                            "api_type": "modifiable",
+                            "key": true
+                        },
+                        "maintenance_id": {
+                            "value": "000418",
+                            "api_type": "modifiable",
+                            "key": true
+                        },
+                        "maintenance_date": {
+                            "value": "2013-11-01",
+                            "api_type": "modifiable",
+                            "display_label": "Maintenance Date"
+                        },
+                        "description": {
+                            "value": "Oil & Lube",
+                            "api_type": "modifable",
+                            "display_label": "Maintenance Description"
+                        },
+                        "cost": {
+                            "value": "152.83",
+                            "api_type": "modifiable",
+                            "display_label": "Maintenance Cost"
+                        }
+                    }
+                ]
+            }
+        },
+        "car": {
+            "description": "Car Item",
+            "type": "object",
+            "required": [
+                "basic"
+            ],
+            "properties": {
+                "basic": {
+                    "$ref": "#/definitions/basic"
+                },
+                "odometer_logs": {
+                    "$ref": "#/definitions/odometerlogs"
+                },
+                "trips": {
+                    "$ref": "#/definitions/trips"
+                },
+                "insurance_policies": {
+                    "$ref": "#/definitions/insurancepolicies"
+                },
+                "maintenance_logs": {
+                    "$ref": "#/definitions/maintenancelogs"
+                }
+            }
+        },
+        "basic": {
+            "description": "Car Basic Item",
+            "type": "object",
+            "required": [
+                "vin",
+                "plate_state",
+                "plate_number"
+            ],
+            "properties": {
+                "links": {
+                    "description": "Hypermedia Links that impact an item in the Cars collection",
+                    "type": "object",
+                    "properties": {
+                        "tutorial4-cars.info": {
+                            "$ref": "#/definitions/link"
+                        },
+                        "tutorial4-cars.modify": {
+                            "$ref": "#/definitions/link"
+                        },
+                        "tutorial4-cars.sell": {
+                            "$ref": "#/definitions/link"
+                        },
+                        "tutorial4-cars.delete": {
+                            "$ref": "#/definitions/link"
+                        },
+                        "tutorial4-owners.info": {
+                            "$ref": "#/definitions/link"
+                        }
+                    }
+                },
+                "vin": {
+                    "$ref": "#/definitions/vin"
+                },
+                "plate_state": {
+                    "$ref": "#/definitions/platestate"
+                },
+                "plate_number": {
+                    "$ref": "#/definitions/platenumber"
+                },
+                "vehicle_type": {
+                    "$ref": "#/definitions/vehicletype"
+                },
+                "vehicle_year": {
+                    "$ref": "#/definitions/vehicleyear"
+                },
+                "make": {
+                    "$ref": "#/definitions/make"
+                },
+                "model": {
+                    "$ref": "#/definitions/model"
+                },
+                "color": {
+                    "$ref": "#/definitions/color"
+                },
+                "owner_id": {
+                    "$ref": "#/definitions/ownerid"
+                },
+                "owner_name": {
+                    "$ref": "#/definitions/ownername"
+                },
+                "created_by_id": {
+                    "$ref": "#/definitions/createdbyid"
+                },
+                "created_date_time": {
+                    "$ref": "#/definitions/createddatetime"
+                },
+                "updated_by_id": {
+                    "$ref": "#/definitions/updatedbyid"
+                },
+                "updated_date_time": {
+                    "$ref": "#/definitions/updateddatetime"
+                }
+            }
+        },
+        "odometerlogs": {
+            "description": "A collection of Odometer Logs",
+            "type": "object",
+            "required": [
+                "values"
+            ],
+            "properties": {
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/odometerlog"
+                    }
+                }
+            }
+        },
+        "odometerlog": {
+            "description": "Odometer Log Item",
+            "type": "object",
+            "required": [
+                "vin",
+                "read_date",
+                "miles",
+                "read_by_id",
+                "read_by_name"
+            ],
+            "properties": {
+                "vin": {
+                    "$ref": "#/definitions/vin"
+                },
+                "read_date": {
+                    "$ref": "#/definitions/readdate"
+                },
+                "miles": {
+                    "$ref": "#/definitions/miles"
+                },
+                "read_by_id": {
+                    "$ref": "#/definitions/readbyid"
+                },
+                "read_by_name": {
+                    "$ref": "#/definitions/readbyname"
+                }
+            }
+        },
+        "trips": {
+            "description": "A collection of Trips",
+            "type": "object",
+            "required": [
+                "values"
+            ],
+            "properties": {
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/trip"
+                    }
+                }
+            }
+        },
+        "trip": {
+            "description": "Trip Item",
+            "type": "object",
+            "required": [
+                "vin",
+                "trip_id",
+                "destination",
+                "start_date",
+                "end_date",
+                "start_miles",
+                "end_miles"
+            ],
+            "properties": {
+                "vin": {
+                    "$ref": "#/definitions/vin"
+                },
+                "trip_id": {
+                    "$ref": "#/definitions/tripid"
+                },
+                "destination": {
+                    "$ref": "#/definitions/destination"
+                },
+                "start_date": {
+                    "$ref": "#/definitions/startdate"
+                },
+                "end_date": {
+                    "$ref": "#/definitions/enddate"
+                },
+                "start_miles": {
+                    "$ref": "#/definitions/startmiles"
+                },
+                "end_miles": {
+                    "$ref": "#/definitions/endmiles"
+                }
+            }
+        },
+        "insurancepolicies": {
+            "description": "Insurance Policy Item",
+            "type": "object",
+            "required": [
+                "vin",
+                "policy_id",
+                "insurer"
+            ],
+            "properties": {
+                "vin": {
+                    "$ref": "#/definitions/vin"
+                },
+                "policy_id": {
+                    "$ref": "#/definitions/policyid"
+                },
+                "insurer": {
+                    "$ref": "#/definitions/insurer"
+                }
+            }
+        },
+        "maintenancelogs": {
+            "description": "A collection of Maintenance Logs",
+            "type": "object",
+            "required": [
+                "values"
+            ],
+            "properties": {
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/maintenancelog"
+                    }
+                }
+            }
+        },
+        "maintenancelog": {
+            "description": "Maintenance Log Item",
+            "type": "object",
+            "required": [
+                "vin",
+                "maintenance_id",
+                "maintenance_date",
+                "description",
+                "cost"
+            ],
+            "properties": {
+                "vin": {
+                    "$ref": "#/definitions/vin"
+                },
+                "maintenance_id": {
+                    "$ref": "#/definitions/maintenanceid"
+                },
+                "maintenance_date": {
+                    "$ref": "#/definitions/maintenancedate"
+                },
+                "description": {
+                    "$ref": "#/definitions/description"
+                },
+                "cost": {
+                    "$ref": "#/definitions/cost"
+                }
+            }
+        },
+        "link": {
+            "description": "Hypermedia links format",
+            "type": "object",
+            "required": [
+                "rel",
+                "href",
+                "method",
+                "title"
+            ],
+            "properties": {
+                "rel": {
+                    "type": "string"
+                },
+                "href": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "method": {
+                    "type": "string",
+                    "enum": [
+                        "DELETE",
+                        "GET",
+                        "OPTIONS",
+                        "POST",
+                        "PUT"
+                    ]
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "toplevelmetadata": {
+            "type": "object",
+            "required": [
+                "collection_size",
+                "page_start",
+                "page_end",
+                "page_size",
+                "default_page_size",
+                "max_page_size"
+            ],
+            "properties": {
+                "collection_size": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "page_start": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "page_end": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "page_size": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "default_page_size": {
+                    "type": "integer",
+                    "minimum": 1
+                },
+                "max_page_size": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "field_sets_returned": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/fieldsetsreturned"
+                    }
+                },
+                "field_sets_available": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/fieldsetsavailable"
+                    }
+                },
+                "default_field_sets": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/defaultfieldsets"
+                    }
+                },
+                "contexts": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/contexts"
+                    }
+                }
+            }
+        },
+        "error": {
+            "description": "Error Information",
+            "type": "object",
+            "properties": {
+                "return_code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "explanation": {
+                    "type": "string"
+                },
+                "error_data": {
+                    "type": "string"
+                }
+            }
+        },
+        "methods": {
+            "description": "Supported HTTP Methods",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "vin": {
+            "description": "Vehicle Identification Number",
+            "type": "object",
+            "required": [
+                "value",
+                "api_type"
+            ],
+            "properties": {
+                "value": {
+                    "type": "string",
+                    "maxLength": 16
+                },
+                "api_type": {
+                    "type": "string",
+                    "enum": [
+                        "read-only",
+                        "modifiable"
+                    ]
+                },
+                "key": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "platestate": {
+            "description": "License Plate State",
+            "type": "object",
+            "required": [
+                "value",
+                "api_type",
+                "description",
+                "domain"
+            ],
+            "properties": {
+                "value": {
+                    "type": "string",
+                    "maxLength": 2
+                },
+                "api_type": {
+                    "type": "string",
+                    "enum": [
+                        "read-only",
+                        "modifiable"
+                    ]
+                },
+                "description": {
+                    "type": "string"
+                },
+                "domain": {
+                    "type": "string",
+                    "format": "uri"
+                }
+            }
+        },
+        "platenumber": {
+            "description": "License Plate Number",
+            "type": "object",
+            "required": [
+                "value",
+                "api_type"
+            ],
+            "properties": {
+                "value": {
+                    "type": "string"
+                },
+                "api_type": {
+                    "type": "string",
+                    "enum": [
+                        "read-only",
+                        "modifiable"
+                    ]
+                }
+            }
+        },
+        "vehicletype": {
+            "description": "Type of Vehicle",
+            "type": "object",
+            "required": [
+                "value",
+                "api_type",
+                "domain"
+            ],
+            "properties": {
+                "value": {
+                    "type": "string",
+                    "enum": [
+                        "Car/Sedan/Coupe",
+                        "Delivery/Service Truck",
+                        "Moped/Scooter",
+                        "Motorcycle",
+                        "Other",
+                        "Truck/SUV"
+                    ]
+                },
+                "api_type": {
+                    "type": "string",
+                    "enum": [
+                        "read-only",
+                        "modifiable",
+                        "derived"
+                    ]
+                },
+                "domain": {
+                    "type": "string",
+                    "format": "uri"
+                }
+            }
+        },
+        "vehicleyear": {
+            "description": "Model Year of the Vehicle",
+            "type": "object",
+            "required": [
+                "value",
+                "api_type"
+            ],
+            "properties": {
+                "value": {
+                    "type": "string",
+                    "maxLength": 4
+                },
+                "api_type": {
+                    "type": "string",
+                    "enum": [
+                        "read-only",
+                        "modifiable"
+                    ]
+                }
+            }
+        },
+        "make": {
+            "description": "Make of the Vehicle",
+            "type": "object",
+            "required": [
+                "value",
+                "api_type",
+                "domain"
+            ],
+            "properties": {
+                "value": {
+                    "type": "string"
+                },
+                "api_type": {
+                    "type": "string",
+                    "enum": [
+                        "read-only",
+                        "modifiable"
+                    ]
+                },
+                "domain": {
+                    "type": "string",
+                    "format": "uri"
+                }
+            }
+        },
+        "model": {
+            "description": "Model of the Vehicle",
+            "type": "object",
+            "required": [
+                "value",
+                "api_type",
+                "domain"
+            ],
+            "properties": {
+                "value": {
+                    "type": "string"
+                },
+                "api_type": {
+                    "type": "string",
+                    "enum": [
+                        "read-only",
+                        "modifiable"
+                    ]
+                },
+                "domain": {
+                    "type": "string",
+                    "format": "uri"
+                }
+            }
+        },
+        "color": {
+            "description": "Color of the Vehicle",
+            "type": "object",
+            "required": [
+                "value",
+                "api_type",
+                "domain"
+            ],
+            "properties": {
+                "value": {
+                    "type": "string"
+                },
+                "api_type": {
+                    "type": "string",
+                    "enum": [
+                        "read-only",
+                        "modifiable"
+                    ]
+                },
+                "domain": {
+                    "type": "string",
+                    "format": "uri"
+                }
+            }
+        },
+        "ownerid": {
+            "description": "The ID of the owner of the vehicle",
+            "type": "object",
+            "required": [
+                "value",
+                "api_type"
+            ],
+            "properties": {
+                "value": {
+                    "type": "string",
+                    "maxLength": 9
+                },
+                "api_type": {
+                    "type": "string",
+                    "enum": [
+                        "read-only",
+                        "modifiable"
+                    ]
+                }
+            }
+        },
+        "ownername": {
+            "description": "The name of the owner of the vehicle",
+            "type": "object",
+            "required": [
+                "value",
+                "api_type"
+            ],
+            "properties": {
+                "value": {
+                    "type": "string"
+                },
+                "api_type": {
+                    "type": "string",
+                    "enum": [
+                        "read-only",
+                        "modifiable",
+                        "related"
+                    ]
+                },
+                "related-resource": {
+                    "type": "string"
+                }
+            }
+        },
+        "createdbyid": {
+            "description": "The ID of the person that created the vehicle entry",
+            "type": "object",
+            "required": [
+                "value",
+                "api_type",
+                "description"
+            ],
+            "properties": {
+                "value": {
+                    "type": "string",
+                    "maxLength": 9
+                },
+                "api_type": {
+                    "type": "string",
+                    "enum": [
+                        "system"
+                    ]
+                },
+                "description": {
+                    "type": "string"
+                }
+            }
+        },
+        "createddatetime": {
+            "description": "When the vehicle entry was created",
+            "type": "object",
+            "required": [
+                "value",
+                "api_type"
+            ],
+            "properties": {
+                "value": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "api_type": {
+                    "type": "string",
+                    "enum": [
+                        "system"
+                    ]
+                }
+            }
+        },
+        "updatedbyid": {
+            "description": "The ID of the person that last updated the vehicle entry",
+            "type": "object",
+            "required": [
+                "value",
+                "api_type",
+                "description"
+            ],
+            "properties": {
+                "value": {
+                    "type": "string",
+                    "maxLength": 9
+                },
+                "api_type": {
+                    "type": "string",
+                    "enum": [
+                        "system"
+                    ]
+                },
+                "description": {
+                    "type": "string"
+                }
+            }
+        },
+        "updateddatetime": {
+            "description": "When the vehicle entry was last updated",
+            "type": "object",
+            "required": [
+                "value",
+                "api_type"
+            ],
+            "properties": {
+                "value": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "api_type": {
+                    "type": "string",
+                    "enum": [
+                        "system"
+                    ]
+                }
+            }
+        },
+        "readdate": {
+            "description": "When the odometer log was created",
+            "type": "object",
+            "required": [
+                "value",
+                "api_type"
+            ],
+            "properties": {
+                "value": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "api_type": {
+                    "type": "string",
+                    "enum": [
+                        "read-only",
+                        "modifiable"
+                    ]
+                },
+                "key": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "miles": {
+            "description": "Mileage read on odometer",
+            "type": "object",
+            "required": [
+                "value",
+                "api_type"
+            ],
+            "properties": {
+                "value": {
+                    "type": "string"
+                },
+                "api_type": {
+                    "type": "string",
+                    "enum": [
+                        "read-only",
+                        "modifiable"
+                    ]
+                }
+            }
+        },
+        "readbyid": {
+            "description": "The ID of the person that created the odometer log",
+            "type": "object",
+            "required": [
+                "value",
+                "api_type"
+            ],
+            "properties": {
+                "value": {
+                    "type": "string",
+                    "maxLength": 9
+                },
+                "api_type": {
+                    "type": "string",
+                    "enum": [
+                        "read-only",
+                        "modifiable"
+                    ]
+                }
+            }
+        },
+        "readbyname": {
+            "description": "The name of the person that created the odometer log",
+            "type": "object",
+            "required": [
+                "value",
+                "api_type"
+            ],
+            "properties": {
+                "value": {
+                    "type": "string"
+                },
+                "api_type": {
+                    "type": "string",
+                    "enum": [
+                        "read-only",
+                        "modifiable",
+                        "related"
+                    ]
+                },
+                "related-resource": {
+                    "type": "string"
+                }
+            }
+        },
+        "tripid": {
+            "description": "Trip Identification Number",
+            "type": "object",
+            "required": [
+                "value",
+                "api_type"
+            ],
+            "properties": {
+                "value": {
+                    "type": "string"
+                },
+                "api_type": {
+                    "type": "string",
+                    "enum": [
+                        "read-only",
+                        "modifiable"
+                    ]
+                },
+                "key": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "destination": {
+            "description": "Trip Destination",
+            "type": "object",
+            "required": [
+                "value",
+                "api_type"
+            ],
+            "properties": {
+                "value": {
+                    "type": "string"
+                },
+                "api_type": {
+                    "type": "string",
+                    "enum": [
+                        "read-only",
+                        "modifiable"
+                    ]
+                }
+            }
+        },
+        "startdate": {
+            "description": "When the trip began",
+            "type": "object",
+            "required": [
+                "value",
+                "api_type"
+            ],
+            "properties": {
+                "value": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "api_type": {
+                    "type": "string",
+                    "enum": [
+                        "read-only",
+                        "modifiable"
+                    ]
+                }
+            }
+        },
+        "enddate": {
+            "description": "When the trip ended",
+            "type": "object",
+            "required": [
+                "value",
+                "api_type"
+            ],
+            "properties": {
+                "value": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "api_type": {
+                    "type": "string",
+                    "enum": [
+                        "read-only",
+                        "modifiable"
+                    ]
+                }
+            }
+        },
+        "startmiles": {
+            "description": "Mileage read on odometer at beginning of trip",
+            "type": "object",
+            "required": [
+                "value",
+                "api_type"
+            ],
+            "properties": {
+                "value": {
+                    "type": "string"
+                },
+                "api_type": {
+                    "type": "string",
+                    "enum": [
+                        "read-only",
+                        "modifiable"
+                    ]
+                }
+            }
+        },
+        "endmiles": {
+            "description": "Mileage read on odometer at end of trip",
+            "type": "object",
+            "required": [
+                "value",
+                "api_type"
+            ],
+            "properties": {
+                "value": {
+                    "type": "string"
+                },
+                "api_type": {
+                    "type": "string",
+                    "enum": [
+                        "read-only",
+                        "modifiable"
+                    ]
+                }
+            }
+        },
+        "policyid": {
+            "description": "Policy Identification Number",
+            "type": "object",
+            "required": [
+                "value",
+                "api_type"
+            ],
+            "properties": {
+                "value": {
+                    "type": "string"
+                },
+                "api_type": {
+                    "type": "string",
+                    "enum": [
+                        "read-only",
+                        "modifiable"
+                    ]
+                },
+                "key": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "insurer": {
+            "description": "Insurance Agency",
+            "type": "object",
+            "required": [
+                "value",
+                "api_type"
+            ],
+            "properties": {
+                "value": {
+                    "type": "string"
+                },
+                "api_type": {
+                    "type": "string",
+                    "enum": [
+                        "read-only",
+                        "modifiable"
+                    ]
+                }
+            }
+        },
+        "maintenanceid": {
+            "description": "Maintenance Log Identification Number",
+            "type": "object",
+            "required": [
+                "value",
+                "api_type"
+            ],
+            "properties": {
+                "value": {
+                    "type": "string"
+                },
+                "api_type": {
+                    "type": "string",
+                    "enum": [
+                        "read-only",
+                        "modifiable"
+                    ]
+                },
+                "key": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "maintenancedate": {
+            "description": "When the maintenance was done on the Car",
+            "type": "object",
+            "required": [
+                "value",
+                "api_type"
+            ],
+            "properties": {
+                "value": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "api_type": {
+                    "type": "string",
+                    "enum": [
+                        "read-only",
+                        "modifiable"
+                    ]
+                }
+            }
+        },
+        "description": {
+            "description": "Maintenance Log Description",
+            "type": "object",
+            "required": [
+                "value",
+                "api_type"
+            ],
+            "properties": {
+                "value": {
+                    "type": "string"
+                },
+                "api_type": {
+                    "type": "string",
+                    "enum": [
+                        "read-only",
+                        "modifiable"
+                    ]
+                }
+            }
+        },
+        "cost": {
+            "description": "Cost of Maintenance",
+            "type": "object",
+            "required": [
+                "value",
+                "api_type"
+            ],
+            "properties": {
+                "value": {
+                    "type": "string"
+                },
+                "api_type": {
+                    "type": "string",
+                    "enum": [
+                        "read-only",
+                        "modifiable"
+                    ]
+                }
+            }
+        },
+        "fieldsetsreturned": {
+            "description": "Field Sets Returned",
+            "type": "object",
+            "properties": {
+                "value": {
+                    "type": "string",
+                    "enum": [
+                        "basic",
+                        "odometer_logs",
+                        "trips",
+                        "insurance_policies",
+                        "maintenance_logs"
+                    ]
+                }
+            }
+        },
+        "fieldsetsavailable": {
+            "description": "Field Sets Available",
+            "type": "object",
+            "properties": {
+                "value": {
+                    "type": "string",
+                    "enum": [
+                        "basic",
+                        "odometer_logs",
+                        "trips",
+                        "insurance_policies",
+                        "maintenance_logs"
+                    ]
+                }
+            }
+        },
+        "defaultfieldsets": {
+            "description": "Default Field Sets",
+            "type": "object",
+            "properties": {
+                "value": {
+                    "type": "string",
+                    "enum": [
+                        "basic"
+                    ]
+                }
+            }
+        },
+        "contexts": {
+            "description": "Contexts",
+            "type": "object",
+            "required": [
+                "values"
+            ],
+            "properties": {
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/mileage"
+                    }
+                }
+            }
+        },
+        "mileage": {
+            "description": "Mileage Context",
+            "type": "object",
+            "properties": {
+                "value": {
+                    "type": "string",
+                    "enum": [
+                        "basic",
+                        "odometer_logs",
+                        "trips"
+                    ]
+                }
+            }
+        }
+    }
+}

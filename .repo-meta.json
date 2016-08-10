@@ -1,0 +1,48 @@
+{
+    "$schemaver": "1.0",
+    "displayName": "Cars Tutorial",
+    "maintainers": {
+        "teams": [
+            "byu-oit-appdev"
+        ],
+        "developers": [
+            "mhailstone",
+            "bwinterton"
+        ]
+    },
+    "tags": [
+        "microservice",
+        "tutorial"
+    ],
+    "urls": {
+        "prod": {
+            "api": "https://api.byu.edu/domains/tutorial/cars"
+        },
+        "stage": "https://api.byu.edu/domains/tutorial/cars"
+    },
+    "stack": {
+        "aws": {
+            "regions": ["us-west-2"],
+            "account": "",
+            "awsTags": {
+                "AppName": "",
+                "ModuleName": ""
+            }
+        }
+    },
+    "productDefRepo": "https://github.com/byu-oit-appdev/cars-tutorial",
+    "productDef": {
+        "name": "cars-tutorial",
+        "tags": [
+            "microservice",
+            "tutorial"
+        ],
+        "maintainers": {
+            "developers": [
+                "mhailstone",
+                "bwinterton"
+            ]
+        }
+    },
+    "swagger_path": "swagger.json"
+}
