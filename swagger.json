@@ -2897,6 +2897,85 @@
             }
         }
     },
+    "x-event-types": {
+        "car created": {
+            "description": "car created event definition",
+            "domain": "edu.byu",
+            "entity": "cars-tutorial",
+            "schema": {
+                "type": "object",
+                "required": [
+                    "event"
+                ],
+                "properties": {
+                    "event": {
+                        "type": "object",
+                        "required": [
+                            "event_header"
+                        ],
+                        "properties": {
+                            "event_header": {
+                                "type": "object",
+                                "required": [
+                                    "domain",
+                                    "entity",
+                                    "event_type"
+                                ],
+                                "properties": {
+                                    "domain": {
+                                        "type": "string"
+                                    },
+                                    "entity": {
+                                        "type": "string"
+                                    },
+                                    "event_type": {
+                                        "type": "string"
+                                    },
+                                    "source_dt": {
+                                        "type": "string"
+                                    },
+                                    "event_dt": {
+                                        "type": "string"
+                                    },
+                                    "event_id": {
+                                        "type": "string"
+                                    },
+                                    "dispatch_id": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "event_body": {
+                                "type": "object",
+                                "properties": {
+                                    "vin": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "example": {
+                "event": {
+                    "event_header": {
+                        "domain": "edu.byu",
+                        "entity": "cars tutorial",
+                        "event_type": "car created",
+                        "source_dt": "2016-08-11T11:22:33.00Z",
+                        "event_dt": "2016-08-11T11:22:33.44Z",
+                        "event_id": "cea9a774-dfe8-4dfd-8a2a-bb2edc984407",
+                        "dispatch_id": "ceb8a732-efe9-3acb-b8a2-8b2e3498b407"
+                    },
+                    "event_body": {
+                        "vin": "1FTBE14A4NP05962"
+                    }
+                }
+            },
+            "external-documentation": "Simple documentation"
+        }
+    },
     "definitions": {
         "cars": {
             "description": "A collection of Cars",
