@@ -32,6 +32,7 @@
     "productDef": {
         "name": "cars-tutorial",
         "tags": [
+            "microservice",
             "tutorial"
         ],
         "maintainers": {
