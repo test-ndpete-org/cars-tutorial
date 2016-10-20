@@ -1,44 +1,27 @@
 {
-    "$schemaver": "1.0",
-    "displayName": "Cars Tutorial",
-    "maintainers": {
-        "teams": [
-            "byu-oit-appdev"
-        ],
-        "developers": [
-            "mhailstone"
+    "$schemaver": "1.0rc2",
+    "type": "web service",
+    "assignment_group": "gro:AD-Software Architecture",
+    "maintained_by": [
+        "mhailstone"
+    ],
+    "stages": {
+        "production": {
+            "urls": {
+                "physical_url": "https://api.byu.edu/domains/tutorial/cars"
+            },
+            "hosting_location": "AWS",
+            "aws_account": ""
+        }
+    },
+    "links": {
+        "source_repo_url": "https://github.com/byu-oit-appdev/cars-tutorial",
+        "swagger_urls": [
+            "swagger.json"
         ]
     },
-    "tags": [
-        "tutorial"
-    ],
-    "urls": {
-        "prod": {
-            "api": "https://api.byu.edu/domains/tutorial/cars"
-        },
-        "stage": "https://api.byu.edu/domains/tutorial/cars"
-    },
-    "stack": {
-        "aws": {
-            "regions": ["us-west-2"],
-            "account": "",
-            "awsTags": {
-                "AppName": "",
-                "ModuleName": ""
-            }
-        }
-    },
-    "productDefRepo": "https://github.com/byu-oit-appdev/cars-tutorial",
-    "productDef": {
-        "name": "cars-tutorial",
-        "tags": [
-            "tutorial"
-        ],
-        "maintainers": {
-            "developers": [
-                "mhailstone"
-            ]
-        }
-    },
-    "swagger_path": "swagger.json"
+    "technologies_used": [
+        "NodeJS",
+        "AWS"
+    ]
 }
