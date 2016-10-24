@@ -22,6 +22,7 @@
     },
     "technologies_used": [
         "NodeJS",
-        "AWS"
+        "AWS",
+        "Mocha"
     ]
 }
